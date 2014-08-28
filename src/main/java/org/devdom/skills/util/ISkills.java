@@ -4,18 +4,12 @@ package org.devdom.skills.util;
  * 
  * @author Carlos Vásquez Polanco
  */
-public final class ISkills{
+public interface ISkills{
     
-    private ISkills(){
-        throw new AssertionError();
-    }
+    public final String test = "";
+    
+    public final String FIND_SKILLS_BY_CATEGORY_ID = "Skills.findSkillsByCategoryId";
+    
+    public final String FIND_SKILLS_BY_ID = "Skills.findSkillsById";
 
-    public static final String test = "";
-    
-    public static final String FIND_SKILLS_BY_CATEGORY_ID = "Skills.findSkillsByCategoryId";
-    
-    public static final String FIND_SKILLS_BY_ID = "Skills.findSkillsById";
-    
-    
-    
 }
