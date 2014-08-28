@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
  */
 public class MediaTypeFilter extends UriConnegFilter{
     
-    private static final Map<String, MediaType> mappedMediaTypes = new HashMap<String, MediaType>(2);
+    private static final Map<String, MediaType> mappedMediaTypes = new HashMap<>(2);
     
     static{
         mappedMediaTypes.put("xml", MediaType.APPLICATION_XML_TYPE );
