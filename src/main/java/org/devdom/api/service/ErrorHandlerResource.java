@@ -17,6 +17,12 @@ import javax.ws.rs.core.UriInfo;
 @Path("/error")
 public class ErrorHandlerResource{
 
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("/404")
@@ -30,6 +36,12 @@ public class ErrorHandlerResource{
 
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("/500/IllegalArgument")
@@ -43,6 +55,12 @@ public class ErrorHandlerResource{
 
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("/500/PersistenceUnitLoading")

@@ -22,17 +22,40 @@ public class UniversityDao {
     private int rowCount = 0;
     private int currentPage = 1;
     
+    /**
+     *
+     */
     public UniversityDao(){    }
     
+    /**
+     *
+     * @param universityId
+     * @param acceptHeader
+     * @param path
+     * @return
+     */
     public List<University> getUniversityById(int universityId,String acceptHeader, String path){
         return findUniversityById(universityId);
     }
 
+    /**
+     *
+     * @param acceptHeader
+     * @param path
+     * @return
+     */
     public MasterUniversity getAllUniversities(String acceptHeader, String path){
         
         return getAllUniversities(acceptHeader, path, 1);
     }
 
+    /**
+     *
+     * @param acceptHeader
+     * @param path
+     * @param page
+     * @return
+     */
     public MasterUniversity getAllUniversities(String acceptHeader, String path, int page){
         currentPage = page;
         from = (currentPage-1)*ROWS_PER_PAGE;
@@ -59,6 +82,10 @@ public class UniversityDao {
         return masterUniversity;
     }
     
+    /**
+     *
+     * @return
+     */
     public List<University> findAllUniversities(){
 
         EntityManager em = emf.createEntityManager();
@@ -76,6 +103,11 @@ public class UniversityDao {
         return universities;
     }
     
+    /**
+     *
+     * @param universityId
+     * @return
+     */
     public List<University> findUniversityById(int universityId){
         EntityManager em = emf.createEntityManager();
         List<University> university = null; 
@@ -93,6 +125,11 @@ public class UniversityDao {
         return university;
     }
     
+    /**
+     *
+     * @param developerId
+     * @return
+     */
     public List<University> findUniversityByDeveloperId(int developerId){
         EntityManager em = emf.createEntityManager();
         List<University> university = null;

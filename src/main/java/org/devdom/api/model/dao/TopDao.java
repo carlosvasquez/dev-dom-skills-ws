@@ -14,6 +14,9 @@ public class TopDao {
     
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa");
     
+    /**
+     *
+     */
     public TopDao(){ }
 
     /**

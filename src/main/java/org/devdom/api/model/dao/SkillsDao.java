@@ -25,13 +25,35 @@ public class SkillsDao{
     private int rowCount = 0;
     private int currentPage = 1;
     
+    /**
+     *
+     */
     public SkillsDao(){
     }
 
+    /**
+     *
+     * @param categoryId
+     * @param votesGt
+     * @param limit
+     * @param acceptHeader
+     * @param path
+     * @return
+     */
     public MasterSkillset getAllSkillsByTopFilters(int categoryId, int votesGt, int limit, String acceptHeader, String path){
         return getAllSkillsByTopFilters(categoryId, votesGt, limit, acceptHeader, path, 1);
     }
 
+    /**
+     *
+     * @param categoryId
+     * @param votesGt
+     * @param limit
+     * @param acceptHeader
+     * @param path
+     * @param page
+     * @return
+     */
     public MasterSkillset getAllSkillsByTopFilters(int categoryId, int votesGt, int limit, String acceptHeader, String path, int page) {
 
         currentPage = page;
@@ -63,11 +85,24 @@ public class SkillsDao{
         return skillset;
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param path
+     * @return
+     */
     public MasterSkillset getAllSkills(String acceptHeader, String path){
         
         return getAllSkills(acceptHeader, path, 1);
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param path
+     * @param page
+     * @return
+     */
     public MasterSkillset getAllSkills(String acceptHeader, String path, int page) {
         currentPage = page;
         from = (currentPage-1)*ROWS_PER_PAGE;
@@ -94,11 +129,26 @@ public class SkillsDao{
         return skillset;
     }
     
+    /**
+     *
+     * @param id
+     * @param acceptHeader
+     * @param path
+     * @return
+     */
     public MasterSkillset getSkillsByDeveloperId(int id, String acceptHeader, String path) {
         
         return getSkillsByDeveloperId(id,acceptHeader,path,1);
     }
     
+    /**
+     *
+     * @param developerId
+     * @param acceptHeader
+     * @param path
+     * @param page
+     * @return
+     */
     public MasterSkillset getSkillsByDeveloperId(int developerId, String acceptHeader, String path, int page) {
         
         DeveloperDao developerDao = new DeveloperDao();
@@ -130,11 +180,26 @@ public class SkillsDao{
 
     }
         
+    /**
+     *
+     * @param id
+     * @param acceptHeader
+     * @param path
+     * @return
+     */
     public MasterSkillset getSkillsByCategoryId(int id, String acceptHeader, String path) {
         
         return getSkillsByCategoryId(id,acceptHeader,path,1);
     }
 
+    /**
+     *
+     * @param categoryId
+     * @param acceptHeader
+     * @param path
+     * @param page
+     * @return
+     */
     public MasterSkillset getSkillsByCategoryId(int categoryId, String acceptHeader, String path, int page){
         
         currentPage = page;
@@ -185,6 +250,11 @@ public class SkillsDao{
         return skills;
     }
     
+    /**
+     *
+     * @param developerId
+     * @return
+     */
     public List<Skills> findSkillsByDeveloperId(int developerId){
         
         EntityManager em = emf.createEntityManager();
@@ -206,6 +276,11 @@ public class SkillsDao{
         return skills;
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public List<Skills> findSkillsById(int id){
 
         EntityManager em = emf.createEntityManager();
@@ -228,6 +303,10 @@ public class SkillsDao{
 
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Skills> findAllSkills(){
 
         EntityManager em = emf.createEntityManager();
@@ -249,6 +328,13 @@ public class SkillsDao{
 
     }
     
+    /**
+     *
+     * @param categoryId
+     * @param votesGt
+     * @param limit
+     * @return
+     */
     public List<Skills> findAllSkillsByTopFilters(int categoryId, int votesGt, int limit){
         EntityManager em = emf.createEntityManager();
         
@@ -271,6 +357,11 @@ public class SkillsDao{
         return skills;
     }
 
+    /**
+     *
+     * @param universityId
+     * @return
+     */
     public List<Skills> findPopularLanguagesByUniversityId(int universityId) {
         EntityManager em = emf.createEntityManager();
         
@@ -290,6 +381,11 @@ public class SkillsDao{
         return skills;
     }
 
+    /**
+     *
+     * @param universityId
+     * @return
+     */
     public List<Skills> findPopularSkillsByUniversityId(int universityId) {
         EntityManager em = emf.createEntityManager();
         

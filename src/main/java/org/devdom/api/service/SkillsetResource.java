@@ -27,6 +27,12 @@ public class SkillsetResource {
     SkillsDao skillsDao = new SkillsDao();
     CategoryDao categoryDao = new CategoryDao();
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public MasterSkillset findAllSkills(@HeaderParam("Accept") String acceptHeader,
@@ -39,6 +45,13 @@ public class SkillsetResource {
 
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param page
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("page/{page}")
@@ -53,6 +66,13 @@ public class SkillsetResource {
 
    }
     
+    /**
+     *
+     * @param id
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("by/category/id/{id}")
@@ -67,6 +87,14 @@ public class SkillsetResource {
 
    }
 
+    /**
+     *
+     * @param id
+     * @param page
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("by/category/id/{id}/page/{page}")
@@ -81,6 +109,13 @@ public class SkillsetResource {
         
     }
     
+    /**
+     *
+     * @param id
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("id/{id}")
@@ -93,6 +128,13 @@ public class SkillsetResource {
 
     }
     
+    /**
+     *
+     * @param id
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("by/developer/id/{id}")
@@ -106,6 +148,14 @@ public class SkillsetResource {
         
     }
     
+    /**
+     *
+     * @param id
+     * @param page
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("by/developer/id/{id}/page/{page}")
@@ -120,6 +170,15 @@ public class SkillsetResource {
         
     }
     
+    /**
+     *
+     * @param categoryId
+     * @param votesGt
+     * @param limit
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("where")
@@ -135,6 +194,16 @@ public class SkillsetResource {
 
     }
     
+    /**
+     *
+     * @param categoryId
+     * @param votesGt
+     * @param limit
+     * @param page
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("where/page/{page}")

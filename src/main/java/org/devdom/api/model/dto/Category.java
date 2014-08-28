@@ -122,7 +122,7 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "org.devdom.model.dto.Category[ id=" + id + " ]";
+        return "Category{" + "id=" + id + ", name=" + name + ", count=" + count + '}';
     }
-    
+
 }

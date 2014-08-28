@@ -26,16 +26,39 @@ public class DeveloperDao {
     private int to = 0;
     private int rowCount = 0;
 
+    /**
+     *
+     */
     public DeveloperDao(){  }
 
+    /**
+     *
+     * @param path
+     * @return
+     */
     public String getRealPath(String path){
         return (path.lastIndexOf("/")==(path.length()-1))?path.substring(0, path.lastIndexOf("/")):path;
     }
     
+    /**
+     *
+     * @param universityId
+     * @param acceptHeader
+     * @param url
+     * @return
+     */
     public MasterDeveloper getMasterDeveloperByUniversityId(int universityId, String acceptHeader, String url){
         return getMasterDeveloperByUniversityId(universityId, acceptHeader, url,1);
     }
     
+    /**
+     *
+     * @param universityId
+     * @param acceptHeader
+     * @param url
+     * @param page
+     * @return
+     */
     public MasterDeveloper getMasterDeveloperByUniversityId(int universityId, String acceptHeader, String url, int page){
         
         String path = getRealPath(url);
@@ -67,12 +90,27 @@ public class DeveloperDao {
         return masterDeveloper;
     }
     
+    /**
+     *
+     * @param skillID
+     * @param acceptHeader
+     * @param url
+     * @return
+     */
     public MasterDeveloper getMasterDeveloperBySkillId(int skillID,String acceptHeader, String url){
 
         return getMasterDeveloperBySkillId(skillID,acceptHeader,url,1);
         
     }
 
+    /**
+     *
+     * @param skillID
+     * @param acceptHeader
+     * @param url
+     * @param page
+     * @return
+     */
     public MasterDeveloper getMasterDeveloperBySkillId(int skillID, String acceptHeader, String url, int page) {
         
         String path = getRealPath(url);
@@ -104,10 +142,23 @@ public class DeveloperDao {
         return masterDeveloper;
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param url
+     * @return
+     */
     public MasterDeveloper getAllDevelopers(String acceptHeader, String url){
         return getAllDevelopers(acceptHeader, url, 1);
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param url
+     * @param page
+     * @return
+     */
     public MasterDeveloper getAllDevelopers(String acceptHeader, String url, int page){
     
         String path = getRealPath(url);
@@ -137,10 +188,31 @@ public class DeveloperDao {
         return masterDeveloper;
     }
             
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param sort
+     * @param limit
+     * @param acceptHeader
+     * @param url
+     * @return
+     */
     public MasterDeveloper getAllDevelopersByFilters(String firstName, String lastName, String sort, int limit, String acceptHeader, String url){
         return getAllDevelopersByFilters(firstName, lastName, sort, limit, acceptHeader, url, 1);
     }
     
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param sort
+     * @param limit
+     * @param acceptHeader
+     * @param url
+     * @param page
+     * @return
+     */
     public MasterDeveloper getAllDevelopersByFilters(String firstName, String lastName, String sort, int limit, String acceptHeader, String url, int page) {
         
         String path = getRealPath(url);
@@ -170,10 +242,25 @@ public class DeveloperDao {
         return masterDeveloper;
     }
     
+    /**
+     *
+     * @param id
+     * @param acceptHeader
+     * @param url
+     * @return
+     */
     public MasterDeveloper getDeveloperById(int id,String acceptHeader, String url){
         return getDeveloperById(id, acceptHeader, url, 1);
     }
     
+    /**
+     *
+     * @param id
+     * @param acceptHeader
+     * @param url
+     * @param page
+     * @return
+     */
     public MasterDeveloper getDeveloperById(int id,String acceptHeader, String url, int page){
         
         String path = getRealPath(url);
@@ -199,6 +286,7 @@ public class DeveloperDao {
         pagination.setDataType(acceptHeader);
         pagination.setAbsolutePath(path);
         pagination.generate();
+        
         masterDeveloper.setUniversity(university);
         masterDeveloper.setDevelopers(developers);
         masterDeveloper.setSkills(skills);
@@ -220,6 +308,11 @@ public class DeveloperDao {
         }
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public List<Developer> findDeveloperById(int id){
         EntityManager em = emf.createEntityManager();
         try{
@@ -233,6 +326,10 @@ public class DeveloperDao {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public List<Developer> findAllDevelopers(){
         EntityManager em = emf.createEntityManager();
         try{
@@ -245,6 +342,14 @@ public class DeveloperDao {
         }
     }
     
+    /**
+     *
+     * @param firstName
+     * @param lastName
+     * @param sort
+     * @param limit
+     * @return
+     */
     public List<Developer> findAllDevelopersByFilters(String firstName, String lastName, String sort, int limit){
         EntityManager em = emf.createEntityManager();
         try{
@@ -261,6 +366,11 @@ public class DeveloperDao {
         }
     }
     
+    /**
+     *
+     * @param universityId
+     * @return
+     */
     public List<Developer> findDevelopersByUniversityId(int universityId){
         EntityManager em = emf.createEntityManager();
         try{

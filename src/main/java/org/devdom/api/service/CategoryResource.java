@@ -24,6 +24,12 @@ public class CategoryResource {
     CategoryDao categoryDao = new CategoryDao();
     MasterCategory masterCategory = new MasterCategory();
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public MasterCategory index(@HeaderParam("Accept") String acceptHeader,
@@ -35,6 +41,13 @@ public class CategoryResource {
 
     }
     
+    /**
+     *
+     * @param page
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("/page/{page}")
@@ -47,6 +60,14 @@ public class CategoryResource {
         return categoryDao.getMasterCategorySortById("desc",acceptHeader,url,page);
     }
 
+    /**
+     *
+     * @param field
+     * @param acceptHeader
+     * @param sort
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("/sort-by/{field}/{sort}")
@@ -69,6 +90,15 @@ public class CategoryResource {
 
     }
     
+    /**
+     *
+     * @param field
+     * @param acceptHeader
+     * @param sort
+     * @param page
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("/sort-by/{field}/{sort}/page/{page}")
@@ -80,26 +110,34 @@ public class CategoryResource {
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
-        if(field.toLowerCase().equals("id")){
-            masterCategory = categoryDao.getMasterCategorySortById(sort, acceptHeader, path, page);
-        }else if(field.toLowerCase().equals("name")){
-            masterCategory = categoryDao.getMasterCategorySortByName(sort, acceptHeader, path, page);
-        }else{
-            masterCategory = categoryDao.getMasterCategorySortByName(sort, acceptHeader, path, page);
+        switch (field.toLowerCase()) {
+            case "id":
+                masterCategory = categoryDao.getMasterCategorySortById(sort, acceptHeader, path, page);
+                break;
+            case "name":
+                masterCategory = categoryDao.getMasterCategorySortByName(sort, acceptHeader, path, page);
+                break;
+            default:
+                masterCategory = categoryDao.getMasterCategorySortByName(sort, acceptHeader, path, page);
+                break;
         }
-        
+
         return masterCategory;
-        
     }
     
+    /**
+     *
+     * @param categoryId
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("/id/{category_id}")
     public List<Category> findCategoryById(@PathParam("category_id") @DefaultValue("0") int categoryId,
                                     @HeaderParam("Accept") String acceptHeader,
                                     @Context UriInfo uri){
-        
-        String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
         return categoryDao.findCategoryById(categoryId);
 

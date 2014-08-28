@@ -25,6 +25,12 @@ public class DeveloperResource {
     CategoryDao categoryDao = new CategoryDao();
     DeveloperDao developerDao = new DeveloperDao();
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public MasterDeveloper index(@HeaderParam("Accept") String acceptHeader,
@@ -36,6 +42,14 @@ public class DeveloperResource {
 
     }
     
+    /**
+     *
+     * @param id
+     * @param page
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("page/{page}")
@@ -51,6 +65,13 @@ public class DeveloperResource {
         
     }
     
+    /**
+     *
+     * @param skillID
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("by/skill/id/{id}")
@@ -65,6 +86,14 @@ public class DeveloperResource {
 
     }
     
+    /**
+     *
+     * @param skillID
+     * @param page
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("by/skill/id/{id}/page/{page}")
@@ -79,6 +108,13 @@ public class DeveloperResource {
         return developerDao.getMasterDeveloperBySkillId(skillID, acceptHeader, path,page);
     }
     
+    /**
+     *
+     * @param id
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("id/{id}")
@@ -93,6 +129,14 @@ public class DeveloperResource {
 
     }
     
+    /**
+     *
+     * @param id
+     * @param acceptHeader
+     * @param page
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("id/{id}/page/{page}")
@@ -108,6 +152,16 @@ public class DeveloperResource {
 
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @param firstName
+     * @param lastName
+     * @param sort
+     * @param limit
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("where")
@@ -124,6 +178,17 @@ public class DeveloperResource {
         
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param page
+     * @param uri
+     * @param firstName
+     * @param lastName
+     * @param sort
+     * @param limit
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("where/page/{page}")
@@ -141,6 +206,13 @@ public class DeveloperResource {
         
     }
     
+    /**
+     *
+     * @param universityId
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("by/university/id/{universityId}")
@@ -154,6 +226,14 @@ public class DeveloperResource {
         
     }
     
+    /**
+     *
+     * @param universityId
+     * @param acceptHeader
+     * @param page
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("by/university/id/{universityId}/page/{page}")

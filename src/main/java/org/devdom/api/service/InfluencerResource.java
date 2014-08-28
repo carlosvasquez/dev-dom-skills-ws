@@ -21,6 +21,13 @@ public class InfluencerResource {
     
     private final TopDao dao = new TopDao();
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @return
+     * @throws Exception
+     */
     @GET
     @Path("top/general")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -29,6 +36,14 @@ public class InfluencerResource {
         return dao.findTop20Devs("1");
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param id
+     * @param uri
+     * @return
+     * @throws Exception
+     */
     @GET
     @Path("top/by/group/id/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

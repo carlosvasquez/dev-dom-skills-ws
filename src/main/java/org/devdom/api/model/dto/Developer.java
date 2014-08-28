@@ -140,6 +140,10 @@ public class Developer implements Serializable {
     public void setPicture(String picture) {
         this.picture = picture;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Developer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", picture=" + picture + '}';
+    }
+
 }

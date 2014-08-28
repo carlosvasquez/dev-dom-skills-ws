@@ -24,6 +24,12 @@ public class UniversityResource {
     CategoryDao categoryDao = new CategoryDao();
     UniversityDao universityDao = new UniversityDao();
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @return
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public MasterUniversity findAllUniversity(@HeaderParam("Accept") String acceptHeader,
@@ -35,6 +41,13 @@ public class UniversityResource {
 
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param page
+     * @param uri
+     * @return
+     */
     @GET
     @Path("page/{page}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -48,6 +61,13 @@ public class UniversityResource {
 
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param id
+     * @param uri
+     * @return
+     */
     @GET
     @Path("id/{id}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})

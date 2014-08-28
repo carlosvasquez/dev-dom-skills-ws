@@ -21,6 +21,13 @@ public class GroupResource {
     
     private final GroupDao dao = new GroupDao();
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @return
+     * @throws Exception
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public List<Group> index(@HeaderParam("Accept") String acceptHeader,
@@ -28,6 +35,14 @@ public class GroupResource {
         return dao.findAllGroups();
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param id
+     * @param uri
+     * @return
+     * @throws Exception
+     */
     @GET
     @Path("/by/id/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

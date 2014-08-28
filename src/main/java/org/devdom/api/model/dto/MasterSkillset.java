@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class MasterSkillset implements Serializable {
     
     @Id
-    private Long id = 1L;
+    private final Long id = 1L;
     
     @OneToMany
     private List<Category> category;
