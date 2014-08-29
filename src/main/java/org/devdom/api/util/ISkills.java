@@ -6,10 +6,10 @@ package org.devdom.api.util;
  */
 public interface ISkills{
     
-    public final String test = "";
+    public String test = "";
     
-    public final String FIND_SKILLS_BY_CATEGORY_ID = "Skills.findSkillsByCategoryId";
+    public String FIND_SKILLS_BY_CATEGORY_ID = "Skills.findSkillsByCategoryId";
     
-    public final String FIND_SKILLS_BY_ID = "Skills.findSkillsById";
+    public String FIND_SKILLS_BY_ID = "Skills.findSkillsById";
 
 }

@@ -91,6 +91,15 @@ public class Developer implements Serializable {
     @Column(name = "pic")
     private String picture;
     
+    @Column(name = "form_id")
+    private String fromId;
+    
+    @Column(name = "current_rating")
+    private String currentRating;
+    
+    @Column(name = "current_position")
+    private int currentPosition;
+    
     public Integer getId() {
         return id;
     }
@@ -141,9 +150,33 @@ public class Developer implements Serializable {
         this.picture = picture;
     }
 
+    public String getFromId() {
+        return fromId;
+    }
+
+    public void setFromId(String fromId) {
+        this.fromId = fromId;
+    }
+
+    public String getCurrentRating() {
+        return currentRating;
+    }
+
+    public void setCurrentRating(String currentRating) {
+        this.currentRating = currentRating;
+    }
+
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public void setCurrentPosition(int currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
     @Override
     public String toString() {
-        return "Developer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", picture=" + picture + '}';
+        return "Developer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", picture=" + picture + ", fromId=" + fromId + ", currentRating=" + currentRating + ", currentPosition=" + currentPosition + '}';
     }
 
 }
