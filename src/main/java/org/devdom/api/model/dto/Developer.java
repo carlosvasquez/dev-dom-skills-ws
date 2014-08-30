@@ -71,6 +71,24 @@ import org.eclipse.persistence.annotations.StoredProcedureParameter;
                                                                       name="university_id",
                                                                       direction=Direction.IN,
                                                                       type=String.class)}
+                                ),
+    @NamedStoredProcedureQuery( name="Developer.search_developers_profile", 
+                                procedureName="search_developers_profile",
+                                returnsResultSet=true,
+                                resultClass=Developer.class,
+                                parameters={@StoredProcedureParameter(queryParameter="fullname",
+                                                                      name="fullname",
+                                                                      direction=Direction.IN,
+                                                                      type=String.class)}
+                                ),
+    @NamedStoredProcedureQuery( name="Developer.search_top20", 
+                                procedureName="search_top20",
+                                returnsResultSet=true,
+                                resultClass=Developer.class,
+                                parameters={@StoredProcedureParameter(queryParameter="fullname",
+                                                                      name="fullname",
+                                                                      direction=Direction.IN,
+                                                                      type=String.class)}
                                 )
 })
 public class Developer extends FacebookProfile{
@@ -107,12 +125,12 @@ public class Developer extends FacebookProfile{
         super.picture = picture;
     }
 
-    public Sex getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Sex sex) {
-        super.sex = sex;
+    public void setSex(String sex) {
+        super.sex = Sex.valueOf(sex).name();
     }
 
     public String getBirthdayDate() {

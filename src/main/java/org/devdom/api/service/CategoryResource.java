@@ -21,8 +21,8 @@ import org.devdom.api.model.dto.MasterCategory;
 @Path("/category")
 public class CategoryResource {
 
-    CategoryDao categoryDao = new CategoryDao();
-    MasterCategory masterCategory = new MasterCategory();
+    private final CategoryDao categoryDao = new CategoryDao();
+    private MasterCategory masterCategory = new MasterCategory();
     
     /**
      *

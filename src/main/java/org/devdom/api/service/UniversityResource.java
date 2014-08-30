@@ -21,8 +21,8 @@ import org.devdom.api.model.dto.University;
 @Path("/university")
 public class UniversityResource {
     
-    CategoryDao categoryDao = new CategoryDao();
-    UniversityDao universityDao = new UniversityDao();
+    private final CategoryDao categoryDao = new CategoryDao();
+    private final UniversityDao universityDao = new UniversityDao();
     
     /**
      *

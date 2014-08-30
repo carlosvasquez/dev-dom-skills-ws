@@ -22,8 +22,8 @@ import org.devdom.api.model.dto.MasterDeveloper;
 @Path("/developer")
 public class DeveloperResource {
     
-    CategoryDao categoryDao = new CategoryDao();
-    DeveloperDao developerDao = new DeveloperDao();
+    private final CategoryDao categoryDao = new CategoryDao();
+    private final DeveloperDao developerDao = new DeveloperDao();
     
     /**
      *

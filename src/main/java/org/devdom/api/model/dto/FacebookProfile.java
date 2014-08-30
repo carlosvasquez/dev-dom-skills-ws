@@ -56,7 +56,7 @@ public class FacebookProfile implements Serializable{
     protected String picture;
     
     @Column(name = "sex")
-    protected Sex sex;
+    protected String sex;
     
     @Column(name = "birthday_date")
     protected String birthdayDate;

@@ -383,5 +383,30 @@ public class DeveloperDao {
             }
         }
     }
+    
+    public List<Developer> findDevelopersBySearchProfile(String fullname){
+        EntityManager em = emf.createEntityManager();
+        try{
+            return (List<Developer>) em.createNamedQuery("Developer.search_developers_profile")
+                    .setParameter("fullname",fullname)
+                    .getResultList();
+        }finally{
+            if(em != null){
+                em.close();
+            }
+        }
+    }
 
+    public List<Developer> findDevelopersBySearchTop20(String fullname){
+        EntityManager em = emf.createEntityManager();
+        try{
+            return (List<Developer>) em.createNamedQuery("Developer.search_top20")
+                    .setParameter("fullname",fullname)
+                    .getResultList();
+        }finally{
+            if(em != null){
+                em.close();
+            }
+        }
+    }
 }

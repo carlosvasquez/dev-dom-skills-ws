@@ -24,8 +24,8 @@ import org.devdom.api.model.dto.MasterSkillset;
 @Path("/skill")
 public class SkillsetResource {
 
-    SkillsDao skillsDao = new SkillsDao();
-    CategoryDao categoryDao = new CategoryDao();
+    private final SkillsDao skillsDao = new SkillsDao();
+    private final CategoryDao categoryDao = new CategoryDao();
     
     /**
      *
