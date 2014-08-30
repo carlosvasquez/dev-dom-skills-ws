@@ -6,28 +6,28 @@ package org.devdom.api.util;
  */
 public interface IPagination {
 
-    public String PATTERN_REPLACE = "/page/+(\\d)*";
+    String PATTERN_REPLACE = "/page/+(\\d)*";
 
-    public String PATTERN_MATCH = "(?s).*\\/page/.*";
+    String PATTERN_MATCH = "(?s).*\\/page/.*";
     
-    public String APPLICATION_JSON_FILE = ".json";
+    String APPLICATION_JSON_FILE = ".json";
     
-    public String APPLICATION_XML_FILE = ".xml";
+    String APPLICATION_XML_FILE = ".xml";
     
-    public String DEFAULT_APPLICATION_XML = "application/xml";
+    String DEFAULT_APPLICATION_XML = "application/xml";
     
-    public String DEFAULT_APPLICATION_JSON = "application/json";
+    String DEFAULT_APPLICATION_JSON = "application/json";
     
-    public String CAPTION_CURRENT = "Current page";
+    String CAPTION_CURRENT = "Current page";
     
-    public String CAPTION_PREVIOUS = "Previous Page";
+    String CAPTION_PREVIOUS = "Previous Page";
 
-    public String CAPTION_NEXT = "Next Page";
+    String CAPTION_NEXT = "Next Page";
     
-    public String CAPTION_LAST = "Last Page";
+    String CAPTION_LAST = "Last Page";
     
-    public String CAPTION_FIRST = "First Page";
+    String CAPTION_FIRST = "First Page";
     
-    public int ROWS_PER_PAGE = 10;
+    int ROWS_PER_PAGE = 10;
     
 }
