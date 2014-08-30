@@ -1,12 +1,9 @@
 package org.devdom.api.model.dto;
 
-import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.eclipse.persistence.annotations.Direction;
 import org.eclipse.persistence.annotations.NamedStoredProcedureQueries;
@@ -15,9 +12,11 @@ import org.eclipse.persistence.annotations.StoredProcedureParameter;
 
 /**
  *
- * @author Carlos Vásquez Polanco
+ * @author Carlos Vasquez Polanco
  */
 @Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Table(name = "dev_dom_likes")
 @XmlRootElement
 @NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery( name="Developer.findDevelopersBySkillId", 
@@ -74,109 +73,78 @@ import org.eclipse.persistence.annotations.StoredProcedureParameter;
                                                                       type=String.class)}
                                 )
 })
-public class Developer implements Serializable {
+public class Developer extends FacebookProfile{
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-    
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
-    
-    @Column(name = "pic")
-    private String picture;
-    
-    @Column(name = "form_id")
-    private String fromId;
-    
-    @Column(name = "current_rating")
-    private String currentRating;
-    
-    @Column(name = "current_position")
-    private int currentPosition;
-    
-    public Integer getId() {
-        return id;
+    public long getUid(){
+        return uid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUid(long uid){
+        super.uid = uid;        
     }
 
-    /**
-     * @return the firstName
-     */
     public String getFirstName() {
         return firstName;
     }
 
-    /**
-     * @param firstName the firstName to set
-     */
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        super.firstName = firstName;
     }
 
-    /**
-     * @return the lastName
-     */
     public String getLastName() {
         return lastName;
     }
 
-    /**
-     * @param lastName the lastName to set
-     */
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        super.lastName = lastName;
     }
 
-    /**
-     * @return the picture
-     */
     public String getPicture() {
         return picture;
     }
 
-    /**
-     * @param picture the picture to set
-     */
     public void setPicture(String picture) {
-        this.picture = picture;
+        super.picture = picture;
     }
 
-    public String getFromId() {
-        return fromId;
+    public Sex getSex() {
+        return sex;
     }
 
-    public void setFromId(String fromId) {
-        this.fromId = fromId;
+    public void setSex(Sex sex) {
+        super.sex = sex;
     }
 
-    public String getCurrentRating() {
-        return currentRating;
+    public String getBirthdayDate() {
+        return birthdayDate;
     }
 
-    public void setCurrentRating(String currentRating) {
-        this.currentRating = currentRating;
+    public void setBirthdayDate(String birthdayDate) {
+        super.birthdayDate = birthdayDate;
     }
 
-    public int getCurrentPosition() {
-        return currentPosition;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCurrentPosition(int currentPosition) {
-        this.currentPosition = currentPosition;
+    public void setEmail(String email) {
+        super.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "Developer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", picture=" + picture + ", fromId=" + fromId + ", currentRating=" + currentRating + ", currentPosition=" + currentPosition + '}';
+    public String getCurrentLocationId() {
+        return currentLocationId;
+    }
+
+    public void setCurrentLocationId(String currentLocationId) {
+        super.currentLocationId = currentLocationId;
+    }
+
+    public String getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(String currentLocation) {
+        super.currentLocation = currentLocation;
     }
 
 }

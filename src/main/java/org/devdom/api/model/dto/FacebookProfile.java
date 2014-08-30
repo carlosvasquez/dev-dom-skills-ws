@@ -69,5 +69,10 @@ public class FacebookProfile implements Serializable{
     
     @Column(name = "current_location")
     protected String currentLocation;
-    
+
+    @Override
+    public String toString() {
+        return "FacebookProfile{" + "uid=" + uid + ", firstName=" + firstName + ", lastName=" + lastName + ", picture=" + picture + ", sex=" + sex + ", birthdayDate=" + birthdayDate + ", email=" + email + ", currentLocationId=" + currentLocationId + ", currentLocation=" + currentLocation + '}';
+    }
+
 }
