@@ -87,6 +87,15 @@ import org.eclipse.persistence.annotations.StoredProcedureParameter;
                                                                       name="university_id",
                                                                       direction=Direction.IN,
                                                                       type=Integer.class)}
+                                ),
+    @NamedStoredProcedureQuery( name="Skills.search_skill", 
+                                procedureName="search_skill",
+                                returnsResultSet=true,
+                                resultClass=Skills.class,
+                                parameters={@StoredProcedureParameter(queryParameter="name",
+                                                                      name="name",
+                                                                      direction=Direction.IN,
+                                                                      type=Integer.class)}
                                 )
 })
 public class Skills implements Serializable{
@@ -95,54 +104,47 @@ public class Skills implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "option_id")
+    private long id;
+
+    @Column(name = "skill")
+    private String skill;
     
     @Column(name = "name")
     private String name;
     
     @Column(name = "votes")
-    private Integer votes;
+    private short votes;
 
-    /**
-     * @return the id
-     */
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    /**
-     * @return the name
-     */
+    public String getSkill() {
+        return skill;
+    }
+
+    public void setSkill(String skill) {
+        this.skill = skill;
+    }
+
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name the name to set
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @return the votes
-     */
-    public Integer getVotes() {
+    public short getVotes() {
         return votes;
     }
 
-    /**
-     * @param votes the votes to set
-     */
-    public void setVotes(Integer votes) {
+    public void setVotes(short votes) {
         this.votes = votes;
     }
 

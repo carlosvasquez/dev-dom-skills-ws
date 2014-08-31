@@ -388,7 +388,7 @@ public class SkillsDao{
      * @param universityId
      * @return
      */
-    public List<Skills> findPopularSkillsByUniversityId(int universityId) {
+    public List<Skills> findPopularSkillsByUniversityId(long universityId) {
         EntityManager em = emf.createEntityManager();
         
         List<Skills> skills = null;
@@ -399,6 +399,29 @@ public class SkillsDao{
                     .getResultList();
         }catch(Exception ex){
             ex.printStackTrace();
+        }finally{
+            if (em != null) {
+                em.close();
+            }
+        }
+        return skills;
+    }
+    
+    /**
+     *
+     * @param name
+     * @return
+     * @throws Exception
+     */
+    public List<Skills> findSkillsByTypedName(String name) throws Exception{
+        EntityManager em = emf.createEntityManager();
+        
+        List<Skills> skills = null;
+        
+        try{
+            skills = em.createNamedQuery("Skills.search_skill")
+                    .setParameter("name",name)
+                    .getResultList();
         }finally{
             if (em != null) {
                 em.close();
