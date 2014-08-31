@@ -9,9 +9,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
-import org.devdom.api.model.dao.CategoryDao;
 import org.devdom.api.model.dao.DeveloperDao;
-import org.devdom.api.model.dto.Developer;
+import org.devdom.api.model.dto.DeveloperStats;
 
 /**
  *
@@ -20,8 +19,8 @@ import org.devdom.api.model.dto.Developer;
 @Path("/find")
 public class FindResource {
     
-    private final DeveloperDao developerDao = new DeveloperDao();
-    private final CategoryDao categoryDao = new CategoryDao();
+    private final DeveloperDao dao = new DeveloperDao();
+
     /**
      *
      * @param acceptHeader
@@ -32,12 +31,12 @@ public class FindResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("top20")
-    public List<Developer> findDevelopersTop20ByName(@HeaderParam("Accept") String acceptHeader,
+    public List<DeveloperStats> findDevelopersTop20ByName(@HeaderParam("Accept") String acceptHeader,
                                                   @Context UriInfo uri,
                                                   @QueryParam("q") String q
                                                  ){
 
-        return developerDao.findDevelopersBySearchTop20(q);
+        return dao.findDevelopersBySearchTop20(q);
     }
     
     /**
@@ -50,13 +49,12 @@ public class FindResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("profile")
-    public List<Developer> findDevelopersProfileByProfile(@HeaderParam("Accept") String acceptHeader,
+    public List<DeveloperStats> findDevelopersProfileByProfile(@HeaderParam("Accept") String acceptHeader,
                                                   @Context UriInfo uri,
                                                   @QueryParam("q") String fullname
                                                  ){
-         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
-        return developerDao.findDevelopersBySearchProfile(fullname);
+        return dao.findDevelopersBySearchProfile(fullname);
     }
     
 }

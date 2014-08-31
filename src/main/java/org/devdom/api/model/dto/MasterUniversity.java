@@ -19,7 +19,7 @@ public class MasterUniversity implements Serializable {
     private Long id;
 
     @OneToMany
-    private List<Developer> developers;
+    private List<DeveloperInformation> developers;
 
     @OneToMany
     private List<University> university;
@@ -48,14 +48,14 @@ public class MasterUniversity implements Serializable {
     /**
      * @return the developers
      */
-    public List<Developer> getDevelopers() {
+    public List<DeveloperInformation> getDevelopers() {
         return developers;
     }
 
     /**
      * @param developers the developers to set
      */
-    public void setDevelopers(List<Developer> developers) {
+    public void setDevelopers(List<DeveloperInformation> developers) {
         this.developers = developers;
     }
 

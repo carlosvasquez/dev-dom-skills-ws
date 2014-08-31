@@ -16,9 +16,8 @@ import org.devdom.api.model.dto.MasterDeveloper;
 
 /**
  *
- * @author Carlos Vasquez
+ * @author Carlos Vasquez Polanco
  */
-
 @Path("/developer")
 public class DeveloperResource {
     

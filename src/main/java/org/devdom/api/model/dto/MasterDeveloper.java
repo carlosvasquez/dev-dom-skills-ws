@@ -23,7 +23,7 @@ public class MasterDeveloper implements Serializable {
     private List<Skills> skills;
     
     @OneToMany
-    private List<Developer> developers;
+    private List<DeveloperInformation> developers;
     
     @OneToMany
     private List<University> university;
@@ -55,14 +55,14 @@ public class MasterDeveloper implements Serializable {
     /**
      * @return the developers
      */
-    public List<Developer> getDevelopers() {
+    public List<DeveloperInformation> getDevelopers() {
         return developers;
     }
 
     /**
      * @param developers the developers to set
      */
-    public void setDevelopers(List<Developer> developers) {
+    public void setDevelopers(List<DeveloperInformation> developers) {
         this.developers = developers;
     }
 

@@ -6,11 +6,11 @@ package org.devdom.api.model.dto;
  */
 public class Resource{
 
-         int id;
-         String uri;
-         String pathRef;
-         String tag;
-         String description;
+        private int id;
+        private String uri;
+        private String pathRef;
+        private String tag;
+        private String description;
 
         public Resource(){
 

@@ -21,10 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 @XmlRootElement
 public class FacebookProfile implements Serializable{
-    
-    /**
-     * 
-     */
+
     public enum Sex {
         MALE ("male","Hombre"),
         FEMALE ("female","Mujer");
@@ -41,6 +38,9 @@ public class FacebookProfile implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @Column(name = "id")
+    protected long id;
+
     @Column(name = "uid", length = 16)
     protected long uid;
     
