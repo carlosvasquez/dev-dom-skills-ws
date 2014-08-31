@@ -11,10 +11,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import org.devdom.api.model.dao.DeveloperDao;
 import org.devdom.api.model.dao.GroupDao;
+import org.devdom.api.model.dao.SkillsDao;
 import org.devdom.api.model.dao.UniversityDao;
+import org.devdom.api.model.dao.WorkDao;
 import org.devdom.api.model.dto.DeveloperStats;
 import org.devdom.api.model.dto.GroupInformation;
+import org.devdom.api.model.dto.Skills;
 import org.devdom.api.model.dto.University;
+import org.devdom.api.model.dto.Work;
 
 /**
  *
@@ -26,6 +30,8 @@ public class FindResource {
     private final DeveloperDao developerDao = new DeveloperDao();
     private final GroupDao groupDao = new GroupDao();
     private final UniversityDao universityDao = new UniversityDao();
+    private final WorkDao workDao = new WorkDao();
+    private final SkillsDao skillsDao = new SkillsDao();
     
     /**
      *
@@ -65,6 +71,14 @@ public class FindResource {
         return developerDao.findDevelopersBySearchProfile(fullname);
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @param q
+     * @return
+     * @throws Exception
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Path("group")
@@ -75,6 +89,14 @@ public class FindResource {
         return groupDao.findGroupsByTypedName(q);
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @param q
+     * @return
+     * @throws Exception
+     */
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Path("university")
@@ -85,4 +107,40 @@ public class FindResource {
         return universityDao.findUniversitiesByTypedName(q);
     }
     
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @param q
+     * @return
+     * @throws Exception
+     */
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("work")
+    public List<Work> findWorksInformationByTypedName(@HeaderParam("Accept") String acceptHeader,
+                                                  @Context UriInfo uri,
+                                                  @QueryParam("q") String q
+                                                 ) throws Exception{
+        return workDao.findWorksByTypedName(q);
+    }
+
+    /**
+     *
+     * @param acceptHeader
+     * @param uri
+     * @param q
+     * @return
+     * @throws Exception
+     */
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("skills")
+    public List<Skills> findSkillsByTypedName(@HeaderParam("Accept") String acceptHeader,
+                                                  @Context UriInfo uri,
+                                                  @QueryParam("q") String q
+                                                 ) throws Exception{
+        return skillsDao.findSkillsByTypedName(q);
+    }
+
 }
