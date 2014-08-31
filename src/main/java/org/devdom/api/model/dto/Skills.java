@@ -104,7 +104,7 @@ public class Skills implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "option_id")
+    @Column(name = "skill_id")
     private long id;
 
     @Column(name = "skill")

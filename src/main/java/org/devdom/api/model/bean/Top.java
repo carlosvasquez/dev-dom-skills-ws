@@ -150,7 +150,7 @@ public class Top implements Serializable{
      */
     public String getGraphPopularSkills(){
     
-        List<Skills> listSkills = this.getSkills();
+        List<Skills> listSkills = getSkills();
         int len = listSkills.size();
         String html;
 
