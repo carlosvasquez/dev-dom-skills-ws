@@ -135,8 +135,9 @@ public class SkillsDao{
      * @param acceptHeader
      * @param path
      * @return
+     * @throws java.lang.Exception
      */
-    public MasterSkillset getSkillsByDeveloperId(int id, String acceptHeader, String path) {
+    public MasterSkillset getSkillsByDeveloperId(int id, String acceptHeader, String path) throws Exception {
         
         return getSkillsByDeveloperId(id,acceptHeader,path,1);
     }
@@ -148,8 +149,9 @@ public class SkillsDao{
      * @param path
      * @param page
      * @return
+     * @throws java.lang.Exception
      */
-    public MasterSkillset getSkillsByDeveloperId(int developerId, String acceptHeader, String path, int page) {
+    public MasterSkillset getSkillsByDeveloperId(int developerId, String acceptHeader, String path, int page) throws Exception {
         
         DeveloperDao developerDao = new DeveloperDao();
         currentPage = page;

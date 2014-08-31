@@ -10,7 +10,7 @@ import org.devdom.api.model.dto.University;
 
 /**
  *
- * @author Carlos Vàsquez Polanco
+ * @author Carlos Vasquez Polanco
  */
 public class UniversityDao {
     
@@ -33,8 +33,9 @@ public class UniversityDao {
      * @param acceptHeader
      * @param path
      * @return
+     * @throws java.lang.Exception
      */
-    public List<University> getUniversityById(int universityId,String acceptHeader, String path){
+    public List<University> getUniversityById(int universityId,String acceptHeader, String path) throws Exception{
         return findUniversityById(universityId);
     }
 
@@ -43,8 +44,9 @@ public class UniversityDao {
      * @param acceptHeader
      * @param path
      * @return
+     * @throws java.lang.Exception
      */
-    public MasterUniversity getAllUniversities(String acceptHeader, String path){
+    public MasterUniversity getAllUniversities(String acceptHeader, String path) throws Exception{
         
         return getAllUniversities(acceptHeader, path, 1);
     }
@@ -55,8 +57,9 @@ public class UniversityDao {
      * @param path
      * @param page
      * @return
+     * @throws java.lang.Exception
      */
-    public MasterUniversity getAllUniversities(String acceptHeader, String path, int page){
+    public MasterUniversity getAllUniversities(String acceptHeader, String path, int page) throws Exception{
         currentPage = page;
         from = (currentPage-1)*ROWS_PER_PAGE;
         to = (from+ROWS_PER_PAGE);
@@ -85,17 +88,16 @@ public class UniversityDao {
     /**
      *
      * @return
+     * @throws java.lang.Exception
      */
-    public List<University> findAllUniversities(){
+    public List<University> findAllUniversities() throws Exception{
 
         EntityManager em = emf.createEntityManager();
         List<University> universities = null; 
         try{
             universities = em.createNamedQuery("University.findAllUniversities")
                  .getResultList();
-         }catch(Exception ex){
-            ex.printStackTrace();
-        } finally {
+         } finally {
             if (em != null) {
                 em.close();
             }
@@ -107,16 +109,15 @@ public class UniversityDao {
      *
      * @param universityId
      * @return
+     * @throws java.lang.Exception
      */
-    public List<University> findUniversityById(int universityId){
+    public List<University> findUniversityById(int universityId) throws Exception{
         EntityManager em = emf.createEntityManager();
         List<University> university = null; 
         try{
             university = em.createNamedQuery("University.findUniversityById")
                     .setParameter("university_id",universityId)
                     .getResultList();
-        }catch(Exception ex){
-            ex.printStackTrace();
         } finally {
             if (em != null) {
                 em.close();
@@ -129,16 +130,15 @@ public class UniversityDao {
      *
      * @param developerId
      * @return
+     * @throws java.lang.Exception
      */
-    public List<University> findUniversityByDeveloperId(int developerId){
+    public List<University> findUniversitiesByDeveloperId(long developerId) throws Exception{
         EntityManager em = emf.createEntityManager();
         List<University> university = null;
         try{
             university = em.createNamedQuery("University.findUniversityByDeveloperId")
                     .setParameter("developer_id",developerId)
                     .getResultList();
-        }catch(Exception ex){
-            ex.printStackTrace();
         } finally {
             if (em != null) {
                 em.close();
@@ -147,4 +147,24 @@ public class UniversityDao {
         return university;
     }
     
+    /**
+     *
+     * @param name
+     * @return
+     * @throws Exception
+     */
+    public List<University> findUniversitiesByTypedName(String name) throws Exception{
+        EntityManager em = emf.createEntityManager();
+        List<University> universities = null;
+        try{
+            universities = em.createNamedQuery("University.search_developers_university")
+                    .setParameter("name",name)
+                    .getResultList();
+        } finally{
+            if(em != null){
+                em.close();
+            }
+        }
+        return universities;
+    }
 }

@@ -10,7 +10,7 @@ import org.devdom.api.util.IResource;
 
 /**
  *
- * @author Carlos Vásquez
+ * @author Carlos Vásquez Polanco
  */
 @SessionScoped
 @Named

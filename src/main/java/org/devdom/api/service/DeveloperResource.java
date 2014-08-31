@@ -29,11 +29,12 @@ public class DeveloperResource {
      * @param acceptHeader
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public MasterDeveloper index(@HeaderParam("Accept") String acceptHeader,
-                                 @Context UriInfo uri){
+                                 @Context UriInfo uri) throws Exception{
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
@@ -48,6 +49,7 @@ public class DeveloperResource {
      * @param acceptHeader
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -56,7 +58,7 @@ public class DeveloperResource {
                                                  @DefaultValue("1") @PathParam("page") int page,
                                                  @HeaderParam("Accept") String acceptHeader,
                                                  @Context UriInfo uri
-                                            ){
+                                            ) throws Exception{
         
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
@@ -70,6 +72,7 @@ public class DeveloperResource {
      * @param acceptHeader
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -77,7 +80,7 @@ public class DeveloperResource {
     public MasterDeveloper developersBySkillID(@PathParam("id") int skillID,
                                                  @HeaderParam("Accept") String acceptHeader,
                                                  @Context UriInfo uri
-                                            ){
+                                            ) throws Exception{
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
@@ -92,6 +95,7 @@ public class DeveloperResource {
      * @param acceptHeader
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -100,7 +104,7 @@ public class DeveloperResource {
                                                   @PathParam("page") @DefaultValue("1") int page,
                                                  @HeaderParam("Accept") String acceptHeader,
                                                  @Context UriInfo uri
-                                            ){
+                                            ) throws Exception{
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
@@ -113,6 +117,7 @@ public class DeveloperResource {
      * @param acceptHeader
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -120,7 +125,7 @@ public class DeveloperResource {
     public MasterDeveloper developersByID(@PathParam("id") int id,
                                                  @HeaderParam("Accept") String acceptHeader,
                                                  @Context UriInfo uri
-                                            ){
+                                            ) throws Exception{
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
@@ -135,6 +140,7 @@ public class DeveloperResource {
      * @param page
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -143,7 +149,7 @@ public class DeveloperResource {
                                                  @HeaderParam("Accept") String acceptHeader,
                                                  @DefaultValue("1") @PathParam("page") int page,
                                                  @Context UriInfo uri
-                                            ){
+                                            ) throws Exception{
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 

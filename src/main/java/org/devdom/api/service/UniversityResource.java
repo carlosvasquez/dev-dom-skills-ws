@@ -29,11 +29,12 @@ public class UniversityResource {
      * @param acceptHeader
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public MasterUniversity findAllUniversity(@HeaderParam("Accept") String acceptHeader,
-                                              @Context UriInfo uri){
+                                              @Context UriInfo uri) throws Exception{
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
@@ -47,13 +48,14 @@ public class UniversityResource {
      * @param page
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Path("page/{page}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public MasterUniversity findAllUniversityAndPage(@HeaderParam("Accept") String acceptHeader,
                                                      @PathParam("page") int page,
-                                                     @Context UriInfo uri){
+                                                     @Context UriInfo uri) throws Exception{
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
@@ -67,13 +69,14 @@ public class UniversityResource {
      * @param id
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Path("id/{id}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public List<University> findUniversityById(@HeaderParam("Accept") String acceptHeader,
                                                @PathParam("id") int id,
-                                               @Context UriInfo uri){
+                                               @Context UriInfo uri) throws Exception{
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 

@@ -1,6 +1,7 @@
 package org.devdom.api.model.dto;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -38,21 +39,36 @@ import org.eclipse.persistence.annotations.StoredProcedureParameter;
                                                                       name="university_id",
                                                                       direction=Direction.IN,
                                                                       type=Integer.class)}
+                                ),
+    @NamedStoredProcedureQuery( name="University.search_developers_university", 
+                                procedureName="search_developers_university",
+                                returnsResultSet=true,
+                                resultClass=University.class,
+                                parameters={@StoredProcedureParameter(queryParameter="name",
+                                                                      name="name",
+                                                                      direction=Direction.IN,
+                                                                      type=Integer.class)}
                                 )
 })
 public class University implements Serializable {
 
     @Id
-    private int id;
+    @Column(name = "university_id")
+    private long id;
+    @Column(name = "university")
     private String name;
-    private int votes;
+    @Column(name = "votes")
+    private short votes;
+    @Column(name = "link")
     private String link;
+    @Column(name = "developers_count")
+    private short developersCount;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -73,14 +89,14 @@ public class University implements Serializable {
     /**
      * @return the votes
      */
-    public int getVotes() {
+    public short getVotes() {
         return votes;
     }
 
     /**
      * @param votes the votes to set
      */
-    public void setVotes(int votes) {
+    public void setVotes(short votes) {
         this.votes = votes;
     }
 
@@ -96,6 +112,14 @@ public class University implements Serializable {
      */
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public short getDevelopersCount() {
+        return developersCount;
+    }
+
+    public void setDevelopersCount(short developersCount) {
+        this.developersCount = developersCount;
     }
     
 }

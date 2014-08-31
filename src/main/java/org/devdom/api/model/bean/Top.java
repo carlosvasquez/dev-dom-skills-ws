@@ -13,7 +13,7 @@ import org.devdom.api.model.dto.Skills;
 
 /**
  *
- * @author Carlos Vásquez
+ * @author Carlos Vásquez Polanco
  */
 @SessionScoped
 @Named

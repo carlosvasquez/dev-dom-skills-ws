@@ -11,8 +11,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import org.devdom.api.model.dao.DeveloperDao;
 import org.devdom.api.model.dao.GroupDao;
+import org.devdom.api.model.dao.UniversityDao;
 import org.devdom.api.model.dto.DeveloperStats;
 import org.devdom.api.model.dto.GroupInformation;
+import org.devdom.api.model.dto.University;
 
 /**
  *
@@ -23,6 +25,7 @@ public class FindResource {
     
     private final DeveloperDao developerDao = new DeveloperDao();
     private final GroupDao groupDao = new GroupDao();
+    private final UniversityDao universityDao = new UniversityDao();
     
     /**
      *
@@ -71,4 +74,15 @@ public class FindResource {
                                                  ) throws Exception{
         return groupDao.findGroupsByTypedName(q);
     }
+    
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("university")
+    public List<University> findUniversitiesInformationByTypedName(@HeaderParam("Accept") String acceptHeader,
+                                                  @Context UriInfo uri,
+                                                  @QueryParam("q") String q
+                                                 ) throws Exception{
+        return universityDao.findUniversitiesByTypedName(q);
+    }
+    
 }

@@ -8,7 +8,7 @@ import org.devdom.api.model.dto.University;
 
 /**
  *
- * @author Carlos Vásquez
+ * @author Carlos Vásquez Polanco
  */
 @SessionScoped
 @Named
@@ -20,8 +20,9 @@ public class UniversityController {
     /**
      * Lista de universidades
      * @return 
+     * @throws java.lang.Exception 
      */
-    public List<University> getUniversities(){
+    public List<University> getUniversities() throws Exception{
         return dao.findAllUniversities();
     }
 }

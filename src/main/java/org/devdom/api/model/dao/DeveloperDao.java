@@ -30,7 +30,9 @@ public class DeveloperDao {
     /**
      *
      */
-    public DeveloperDao(){  }
+    public DeveloperDao(){  
+    
+    }
 
     /**
      *
@@ -47,6 +49,7 @@ public class DeveloperDao {
      * @param acceptHeader
      * @param url
      * @return
+     * @throws java.lang.Exception
      */
     public MasterDeveloper getMasterDeveloperByUniversityId(int universityId, String acceptHeader, String url) throws Exception{
         return getMasterDeveloperByUniversityId(universityId, acceptHeader, url,1);
@@ -59,6 +62,7 @@ public class DeveloperDao {
      * @param url
      * @param page
      * @return
+     * @throws java.lang.Exception
      */
     public MasterDeveloper getMasterDeveloperByUniversityId(int universityId, String acceptHeader, String url, int page) throws Exception{
         
@@ -97,8 +101,9 @@ public class DeveloperDao {
      * @param acceptHeader
      * @param url
      * @return
+     * @throws java.lang.Exception
      */
-    public MasterDeveloper getMasterDeveloperBySkillId(int skillID,String acceptHeader, String url){
+    public MasterDeveloper getMasterDeveloperBySkillId(int skillID,String acceptHeader, String url) throws Exception{
 
         return getMasterDeveloperBySkillId(skillID,acceptHeader,url,1);
         
@@ -111,8 +116,9 @@ public class DeveloperDao {
      * @param url
      * @param page
      * @return
+     * @throws java.lang.Exception
      */
-    public MasterDeveloper getMasterDeveloperBySkillId(int skillID, String acceptHeader, String url, int page) {
+    public MasterDeveloper getMasterDeveloperBySkillId(int skillID, String acceptHeader, String url, int page) throws Exception {
         
         String path = getRealPath(url);
         currentPage = page;
@@ -148,8 +154,9 @@ public class DeveloperDao {
      * @param acceptHeader
      * @param url
      * @return
+     * @throws java.lang.Exception
      */
-    public MasterDeveloper getAllDevelopers(String acceptHeader, String url){
+    public MasterDeveloper getAllDevelopers(String acceptHeader, String url) throws Exception{
         return getAllDevelopers(acceptHeader, url, 1);
     }
     
@@ -159,8 +166,9 @@ public class DeveloperDao {
      * @param url
      * @param page
      * @return
+     * @throws java.lang.Exception
      */
-    public MasterDeveloper getAllDevelopers(String acceptHeader, String url, int page){
+    public MasterDeveloper getAllDevelopers(String acceptHeader, String url, int page) throws Exception{
     
         String path = getRealPath(url);
         currentPage = page;
@@ -198,6 +206,7 @@ public class DeveloperDao {
      * @param acceptHeader
      * @param url
      * @return
+     * @throws java.lang.Exception
      */
     public MasterDeveloper getAllDevelopersByFilters(String firstName, String lastName, String sort, 
                                                      int limit, String acceptHeader, String url) throws Exception{
@@ -214,6 +223,7 @@ public class DeveloperDao {
      * @param url
      * @param page
      * @return
+     * @throws java.lang.Exception
      */
     public MasterDeveloper getAllDevelopersByFilters(String firstName, String lastName, String sort, int limit, String acceptHeader, String url, int page) throws Exception {
         
@@ -250,8 +260,9 @@ public class DeveloperDao {
      * @param acceptHeader
      * @param url
      * @return
+     * @throws java.lang.Exception
      */
-    public MasterDeveloper getDeveloperById(int id,String acceptHeader, String url){
+    public MasterDeveloper getDeveloperById(int id,String acceptHeader, String url) throws Exception{
         return getDeveloperById(id, acceptHeader, url, 1);
     }
     
@@ -262,8 +273,9 @@ public class DeveloperDao {
      * @param url
      * @param page
      * @return
+     * @throws java.lang.Exception
      */
-    public MasterDeveloper getDeveloperById(int id,String acceptHeader, String url, int page){
+    public MasterDeveloper getDeveloperById(int id,String acceptHeader, String url, int page) throws Exception{
         
         String path = getRealPath(url);
         currentPage = page;
@@ -272,7 +284,7 @@ public class DeveloperDao {
         to = (from+ROWS_PER_PAGE);
         
         UniversityDao universityDao = new UniversityDao();
-        List<University> university = universityDao.findUniversityByDeveloperId(id);
+        List<University> university = universityDao.findUniversitiesByDeveloperId(id);
         List<DeveloperInformation> developers = findDeveloperById(id);
         List<Skills> skills = skillDao.findSkillsByDeveloperId(id);
         rowCount = skills.size();
@@ -297,7 +309,7 @@ public class DeveloperDao {
         return masterDeveloper;
     }
     
-    private List<DeveloperInformation> findDevelopersBySkillId(int skillID){
+    private List<DeveloperInformation> findDevelopersBySkillId(int skillID) throws Exception{
         EntityManager em = emf.createEntityManager();
         try{
             return (List<DeveloperInformation>) em.createNamedQuery("Developer.findDevelopersBySkillId")
@@ -314,8 +326,9 @@ public class DeveloperDao {
      *
      * @param id
      * @return
+     * @throws java.lang.Exception
      */
-    public List<DeveloperInformation> findDeveloperById(int id){
+    public List<DeveloperInformation> findDeveloperById(int id) throws Exception{
         EntityManager em = emf.createEntityManager();
         try{
             return (List<DeveloperInformation>) em.createNamedQuery("Developer.findDeveloperById")
@@ -331,8 +344,9 @@ public class DeveloperDao {
     /**
      *
      * @return
+     * @throws java.lang.Exception
      */
-    public List<DeveloperInformation> findAllDevelopers(){
+    public List<DeveloperInformation> findAllDevelopers() throws Exception {
         EntityManager em = emf.createEntityManager();
         try{
             return (List<DeveloperInformation>) em.createNamedQuery("Developer.findAllDevelopers")
@@ -351,6 +365,7 @@ public class DeveloperDao {
      * @param sort
      * @param limit
      * @return
+     * @throws java.lang.Exception
      */
     public List<DeveloperInformation> findAllDevelopersByFilters(String firstName, String lastName, String sort, int limit) throws Exception{
         EntityManager em = emf.createEntityManager();
@@ -372,6 +387,7 @@ public class DeveloperDao {
      *
      * @param universityId
      * @return
+     * @throws java.lang.Exception
      */
     public List<DeveloperInformation> findDevelopersByUniversityId(int universityId) throws Exception{
         EntityManager em = emf.createEntityManager();
@@ -386,6 +402,12 @@ public class DeveloperDao {
         }
     }
     
+    /**
+     *
+     * @param fullname
+     * @return
+     * @throws Exception
+     */
     public List<DeveloperStats> findDevelopersBySearchProfile(String fullname) throws Exception{
         EntityManager em = emf.createEntityManager();
         try{
@@ -399,6 +421,12 @@ public class DeveloperDao {
         }
     }
 
+    /**
+     *
+     * @param fullname
+     * @return
+     * @throws Exception
+     */
     public List<DeveloperStats> findDevelopersBySearchTop20(String fullname) throws Exception {
         EntityManager em = emf.createEntityManager();
         try{

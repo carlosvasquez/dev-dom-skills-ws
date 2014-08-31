@@ -134,13 +134,14 @@ public class SkillsetResource {
      * @param acceptHeader
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("by/developer/id/{id}")
     public MasterSkillset findSkillsByDeveloperId(@PathParam("id") int id,
                                        @HeaderParam("Accept") String acceptHeader,
-                                       @Context UriInfo uri){
+                                       @Context UriInfo uri) throws Exception{
         
         String path = uri.getAbsolutePath().toString();
         
@@ -155,6 +156,7 @@ public class SkillsetResource {
      * @param acceptHeader
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -162,7 +164,7 @@ public class SkillsetResource {
     public MasterSkillset findSkillsByDeveloperIdAndPage(@PathParam("id") int id,
                                        @PathParam("page") @DefaultValue("1") int page,
                                        @HeaderParam("Accept") String acceptHeader,
-                                       @Context UriInfo uri){
+                                       @Context UriInfo uri) throws Exception{
         
         String path = uri.getAbsolutePath().toString();
         
