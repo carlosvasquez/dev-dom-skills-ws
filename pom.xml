@@ -3,10 +3,30 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.devdom</groupId>
-    <version>2.3.0</version>
+    <version>2.5.0</version>
     <artifactId>devdom-api</artifactId>
     <packaging>war</packaging>
     <name>Dev Dom API</name>
+    <organization>
+        <name>Developers Dominicanos</name>
+        <url>http://developers.do</url>
+    </organization>
+    <developers>
+        <developer>
+            <name>Carlos Vásquez Polanco</name>
+            <email>carlosslim@gmail.com</email>
+            <url>http://www.linkedin.com/in/carlosvasquez</url>
+            <organization>Developers Dominicanos</organization>
+            <organizationUrl>http://developers.do</organizationUrl>
+            <properties>
+                <project>Dev Dom API</project>
+            </properties>
+        </developer>
+    </developers>
+    <scm>
+        <url>https://github.com/developersdo/dev-dom-skills-ws</url>
+        <developerConnection>https://github.com/developersdo/dev-dom-skills-ws.git</developerConnection>
+    </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jersey-version>1.18.1</jersey-version>
@@ -50,7 +70,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.32</version>
+            <version>5.1.30</version>
         </dependency>
         <!-- JPA --> 
         <dependency>
