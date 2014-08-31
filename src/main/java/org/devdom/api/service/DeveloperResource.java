@@ -160,6 +160,7 @@ public class DeveloperResource {
      * @param sort
      * @param limit
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -170,7 +171,7 @@ public class DeveloperResource {
                                                   @QueryParam("last_name") String lastName,
                                                   @QueryParam("sort") String sort,
                                                   @QueryParam("limit") int limit
-                                                 ){
+                                                 ) throws Exception{
          String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
         return developerDao.getAllDevelopersByFilters(firstName, lastName, sort, limit, acceptHeader, path);
@@ -187,6 +188,7 @@ public class DeveloperResource {
      * @param sort
      * @param limit
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -198,7 +200,7 @@ public class DeveloperResource {
                                                   @QueryParam("last_name") String lastName,
                                                   @QueryParam("sort") String sort,
                                                   @QueryParam("limit") int limit
-                                                 ){
+                                                 ) throws Exception{
          String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
         return developerDao.getAllDevelopersByFilters(firstName, lastName, sort, limit, acceptHeader, path, page);
@@ -211,13 +213,14 @@ public class DeveloperResource {
      * @param acceptHeader
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     @Path("by/university/id/{universityId}")
     public MasterDeveloper getMasterDeveloperByUniversityId(@PathParam("universityId") int universityId,
                                                             @HeaderParam("Accept") String acceptHeader,
-                                                            @Context UriInfo uri){
+                                                            @Context UriInfo uri) throws Exception{
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 
@@ -232,6 +235,7 @@ public class DeveloperResource {
      * @param page
      * @param uri
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -239,7 +243,7 @@ public class DeveloperResource {
     public MasterDeveloper getMasterDeveloperByUniversityIdAndPage(@PathParam("universityId") int universityId,
                                                             @HeaderParam("Accept") String acceptHeader,
                                                             @DefaultValue("1") @PathParam("page") int page,
-                                                            @Context UriInfo uri){
+                                                            @Context UriInfo uri) throws Exception{
 
         String path = categoryDao.getRealPath(uri.getAbsolutePath().toString());
 

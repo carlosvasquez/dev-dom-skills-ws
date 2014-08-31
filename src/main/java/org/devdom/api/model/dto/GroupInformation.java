@@ -1,14 +1,39 @@
 package org.devdom.api.model.dto;
 
+import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.xml.bind.annotation.XmlRootElement;
+import org.eclipse.persistence.annotations.Direction;
+import org.eclipse.persistence.annotations.NamedStoredProcedureQueries;
+import org.eclipse.persistence.annotations.NamedStoredProcedureQuery;
+import org.eclipse.persistence.annotations.StoredProcedureParameter;
 
 /**
  *
  * @author Carlos Vasquez Polanco
  */
-public class GroupInformation {
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@XmlRootElement
+@NamedStoredProcedureQueries({
+    @NamedStoredProcedureQuery( name="Group.search_group", 
+                                procedureName="search_group",
+                                returnsResultSet=true,
+                                resultClass=GroupInformation.class,
+                                parameters={@StoredProcedureParameter(queryParameter="find",
+                                                                      name="find",
+                                                                      direction=Direction.IN,
+                                                                      type=String.class)}
+                                )
+})
+public class GroupInformation implements Serializable {
     
     @Column(name = "group_id")
+    @Id
     private long groupId;
     
     @Column(name = "group_name")

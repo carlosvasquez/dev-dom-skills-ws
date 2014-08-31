@@ -5,14 +5,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import org.devdom.api.model.dto.Group;
+import org.devdom.api.model.dto.GroupInformation;
 
 /**
  *
  * @author Carlos Vásquez Polanco
  */
 public class GroupDao {
-    
+
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa");
+
     /**
      * Trae todos los datos informativos de los grupos
      * @return
@@ -35,7 +37,7 @@ public class GroupDao {
      * @return
      * @throws Exception 
      */
-    public Group findGroupById(String groupId)throws Exception{
+    public Group findGroupById(String groupId) throws Exception{
 
         EntityManager em = emf.createEntityManager();
         try{
@@ -48,4 +50,17 @@ public class GroupDao {
         }
     }
     
+    public List<GroupInformation> findGroupsByTypedName(String find) throws Exception{
+        
+        EntityManager em = emf.createEntityManager();
+        try{
+            return (List<GroupInformation>) em.createNamedQuery("Group.search_group")
+                    .setParameter("find", find)
+                    .getResultList();
+        }finally{
+            if(em!=null|em.isOpen())
+                em.close();
+        }
+    }
+
 }

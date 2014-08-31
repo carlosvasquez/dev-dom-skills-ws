@@ -2,28 +2,29 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="jpa" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>org.devdom.api.model.dto.Category</class>
+    <class>org.devdom.api.model.dto.DeveloperInformation</class>
+    <class>org.devdom.api.model.dto.DeveloperStats</class>
+    <class>org.devdom.api.model.dto.ErrorHandler</class>
     <class>org.devdom.api.model.dto.FacebookProfile</class>
+    <class>org.devdom.api.model.dto.Group</class>
+    <class>org.devdom.api.model.dto.GroupInformation</class>
+    <class>org.devdom.api.model.dto.MasterSkillset</class>
+    <class>org.devdom.api.model.dto.MasterCategory</class>
+    <class>org.devdom.api.model.dto.MasterUniversity</class>
+    <class>org.devdom.api.model.dto.MasterDeveloper</class>
     <class>org.devdom.api.model.dto.SkillsetQuiz</class>
     <class>org.devdom.api.model.dto.SkillsetQuizQuestions</class>
     <class>org.devdom.api.model.dto.SkillsetQuizQuestionVotes</class>
-    <class>org.devdom.api.model.dto.Category</class>
-    <class>org.devdom.api.model.dto.MasterSkillset</class>
     <class>org.devdom.api.model.dto.Skills</class>
-    <class>org.devdom.api.model.dto.MasterCategory</class>
     <class>org.devdom.api.model.dto.SkillsetQuizOptions</class>
     <class>org.devdom.api.model.dto.SkillsetQuizOptionVotes</class>
-    <class>org.devdom.api.model.dto.MasterUniversity</class>
-    <class>org.devdom.api.model.dto.MasterDeveloper</class>
     <class>org.devdom.api.model.dto.Pagination</class>
-    <class>org.devdom.api.model.dto.ErrorHandler</class>
     <class>org.devdom.api.model.dto.University</class>
-    <class>org.devdom.api.model.dto.DeveloperInformation</class>
-    <class>org.devdom.api.model.dto.DeveloperStats</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <validation-mode>NONE</validation-mode>
     <properties>
-      <property name="eclipselink.jpa.uppercase-column-names" value="true"/>
     </properties>
   </persistence-unit>
 </persistence>

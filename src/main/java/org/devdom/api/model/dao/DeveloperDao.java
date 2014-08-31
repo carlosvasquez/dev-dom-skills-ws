@@ -48,7 +48,7 @@ public class DeveloperDao {
      * @param url
      * @return
      */
-    public MasterDeveloper getMasterDeveloperByUniversityId(int universityId, String acceptHeader, String url){
+    public MasterDeveloper getMasterDeveloperByUniversityId(int universityId, String acceptHeader, String url) throws Exception{
         return getMasterDeveloperByUniversityId(universityId, acceptHeader, url,1);
     }
     
@@ -60,7 +60,7 @@ public class DeveloperDao {
      * @param page
      * @return
      */
-    public MasterDeveloper getMasterDeveloperByUniversityId(int universityId, String acceptHeader, String url, int page){
+    public MasterDeveloper getMasterDeveloperByUniversityId(int universityId, String acceptHeader, String url, int page) throws Exception{
         
         String path = getRealPath(url);
         currentPage = page;
@@ -199,7 +199,8 @@ public class DeveloperDao {
      * @param url
      * @return
      */
-    public MasterDeveloper getAllDevelopersByFilters(String firstName, String lastName, String sort, int limit, String acceptHeader, String url){
+    public MasterDeveloper getAllDevelopersByFilters(String firstName, String lastName, String sort, 
+                                                     int limit, String acceptHeader, String url) throws Exception{
         return getAllDevelopersByFilters(firstName, lastName, sort, limit, acceptHeader, url, 1);
     }
     
@@ -214,7 +215,7 @@ public class DeveloperDao {
      * @param page
      * @return
      */
-    public MasterDeveloper getAllDevelopersByFilters(String firstName, String lastName, String sort, int limit, String acceptHeader, String url, int page) {
+    public MasterDeveloper getAllDevelopersByFilters(String firstName, String lastName, String sort, int limit, String acceptHeader, String url, int page) throws Exception {
         
         String path = getRealPath(url);
         currentPage = page;
@@ -351,7 +352,7 @@ public class DeveloperDao {
      * @param limit
      * @return
      */
-    public List<DeveloperInformation> findAllDevelopersByFilters(String firstName, String lastName, String sort, int limit){
+    public List<DeveloperInformation> findAllDevelopersByFilters(String firstName, String lastName, String sort, int limit) throws Exception{
         EntityManager em = emf.createEntityManager();
         try{
             return (List<DeveloperInformation>) em.createNamedQuery("Developer.findAllDevelopersByFilters")
@@ -372,7 +373,7 @@ public class DeveloperDao {
      * @param universityId
      * @return
      */
-    public List<DeveloperInformation> findDevelopersByUniversityId(int universityId){
+    public List<DeveloperInformation> findDevelopersByUniversityId(int universityId) throws Exception{
         EntityManager em = emf.createEntityManager();
         try{
             return (List<DeveloperInformation>) em.createNamedQuery("Developer.findDevelopersByUniversityId")
@@ -385,7 +386,7 @@ public class DeveloperDao {
         }
     }
     
-    public List<DeveloperStats> findDevelopersBySearchProfile(String fullname){
+    public List<DeveloperStats> findDevelopersBySearchProfile(String fullname) throws Exception{
         EntityManager em = emf.createEntityManager();
         try{
             return (List<DeveloperStats>) em.createNamedQuery("Developer.search_developers_profile")
@@ -398,7 +399,7 @@ public class DeveloperDao {
         }
     }
 
-    public List<DeveloperStats> findDevelopersBySearchTop20(String fullname){
+    public List<DeveloperStats> findDevelopersBySearchTop20(String fullname) throws Exception {
         EntityManager em = emf.createEntityManager();
         try{
             return (List<DeveloperStats>) em.createNamedQuery("Developer.search_top20")

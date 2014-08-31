@@ -10,7 +10,9 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import org.devdom.api.model.dao.DeveloperDao;
+import org.devdom.api.model.dao.GroupDao;
 import org.devdom.api.model.dto.DeveloperStats;
+import org.devdom.api.model.dto.GroupInformation;
 
 /**
  *
@@ -19,14 +21,16 @@ import org.devdom.api.model.dto.DeveloperStats;
 @Path("/find")
 public class FindResource {
     
-    private final DeveloperDao dao = new DeveloperDao();
-
+    private final DeveloperDao developerDao = new DeveloperDao();
+    private final GroupDao groupDao = new GroupDao();
+    
     /**
      *
      * @param acceptHeader
      * @param uri
      * @param q
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -34,9 +38,9 @@ public class FindResource {
     public List<DeveloperStats> findDevelopersTop20ByName(@HeaderParam("Accept") String acceptHeader,
                                                   @Context UriInfo uri,
                                                   @QueryParam("q") String q
-                                                 ){
+                                                 ) throws Exception{
 
-        return dao.findDevelopersBySearchTop20(q);
+        return developerDao.findDevelopersBySearchTop20(q);
     }
     
     /**
@@ -45,6 +49,7 @@ public class FindResource {
      * @param uri
      * @param fullname
      * @return
+     * @throws java.lang.Exception
      */
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
@@ -52,9 +57,18 @@ public class FindResource {
     public List<DeveloperStats> findDevelopersProfileByProfile(@HeaderParam("Accept") String acceptHeader,
                                                   @Context UriInfo uri,
                                                   @QueryParam("q") String fullname
-                                                 ){
+                                                 ) throws Exception{
 
-        return dao.findDevelopersBySearchProfile(fullname);
+        return developerDao.findDevelopersBySearchProfile(fullname);
     }
     
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("group")
+    public List<GroupInformation> findGroupInformationByGroupName(@HeaderParam("Accept") String acceptHeader,
+                                                  @Context UriInfo uri,
+                                                  @QueryParam("q") String q
+                                                 ) throws Exception{
+        return groupDao.findGroupsByTypedName(q);
+    }
 }
